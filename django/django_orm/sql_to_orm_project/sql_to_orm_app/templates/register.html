@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+    <title>Login</title>
+</head>
+<body class="login-body">
+    <div class="login-wrapper">
+        <div class="register-windows">
+            <div class="login-title">Registro de Usuario</div>
+            <div class="login-content">
+                <form class="login-form" id="formRegister" action="/register_user" method="POST">
+                    {% csrf_token %}
+                    <div class="login-text">
+                        <p>Nombre:</p><input type="text" size="100" name="name"/>
+                    </div>
+                    <div class="login-text">
+                        <p>Apellido:</p><input type="text" size="100" name="last_name"/>
+                    </div>
+                    <div class="login-text">
+                        <p>Email:</p><input type="text" size="100" placeholder="email@domain.com" name="email" id="email"/>
+                    </div>
+                    <div class="login-text">
+                        <p>Password:</p><input type="text" size="100" name="password"/>
+                    </div>
+                    <div class="login-buttons">
+                        <input type="submit" value="Registrarse" />
+                    </div>
+                </form>
+            </div>
+            <footer class="login-text-footer">
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li>{{message}}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

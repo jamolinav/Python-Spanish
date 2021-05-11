@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Flask MySQL</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>All the Pets!</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pet in all_pets %}
+                    <tr}>
+                        <td>{{ pet['id'] }}</td>
+                        <td>{{ pet['name'] }}</td>
+                        <td>{{ pet['type'] }}</td>
+                        <td>{{ pet['created_at'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <h1>Add a Pet</h1>
+        <form action="/create_pet" method="POST">
+            <p>Name: <input type="text" name="name"></p>
+            <p>Type: <input type="text" name="type"></p>
+            <input type="submit" value="Add Pet">
+        </form>
+    </div>  
+</body>
+</html>

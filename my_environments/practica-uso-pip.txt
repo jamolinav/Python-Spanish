@@ -1,0 +1,202 @@
+
+
+--- Validar versiones de Python y PIP dentro y fuera del Entorno Virtual  ----
+
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip -V   
+pip 20.1.1 from /Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip (python 3.7)
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % python -V
+Python 3.7.9
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % deactivate
+juanmolina@MacBookPro16-JuanMolina my_environments % 
+juanmolina@MacBookPro16-JuanMolina my_environments % python -V 
+Python 2.7.16
+juanmolina@MacBookPro16-JuanMolina my_environments % pip -V    
+zsh: command not found: pip
+
+
+--- Diferencia entre pip list y pip freeze  ----
+
+juanmolina@MacBookPro16-JuanMolina my_environments % source py3Env/bin/activate
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip3 list                 
+Package           Version
+----------------- -------
+asgiref           3.3.4
+Django            3.2
+pip               20.1.1
+pytz              2021.1
+setuptools        47.1.0
+sqlparse          0.4.1
+typing-extensions 3.7.4.3
+WARNING: You are using pip version 20.1.1; however, version 21.0.1 is available.
+You should consider upgrading via the '/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/bin/python3 -m pip install --upgrade pip' command.
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip3 freeze               
+asgiref==3.3.4
+Django==3.2
+pytz==2021.1
+sqlparse==0.4.1
+typing-extensions==3.7.4.3
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+
+
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip3 list                 
+Package           Version
+----------------- -------
+asgiref           3.3.4
+Django            3.2
+pip               20.1.1
+pytz              2021.1
+setuptools        47.1.0
+sqlparse          0.4.1
+typing-extensions 3.7.4.3
+WARNING: You are using pip version 20.1.1; however, version 21.0.1 is available.
+You should consider upgrading via the '/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/bin/python3 -m pip install --upgrade pip' command.
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip3 freeze               
+asgiref==3.3.4
+Django==3.2
+pytz==2021.1
+sqlparse==0.4.1
+typing-extensions==3.7.4.3
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip uninstall Django
+Found existing installation: Django 3.2
+Uninstalling Django-3.2:
+  Would remove:
+    /Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/bin/django-admin
+    /Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/bin/django-admin.py
+    /Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/Django-3.2.dist-info/*
+    /Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/django/*
+Proceed (y/n)? y
+  Successfully uninstalled Django-3.2
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip3 list           
+Package           Version
+----------------- -------
+asgiref           3.3.4
+pip               20.1.1
+pytz              2021.1
+setuptools        47.1.0
+sqlparse          0.4.1
+typing-extensions 3.7.4.3
+WARNING: You are using pip version 20.1.1; however, version 21.0.1 is available.
+You should consider upgrading via the '/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/bin/python3 -m pip install --upgrade pip' command.
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip show Django
+WARNING: Package(s) not found: Django
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip search flask
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/cli/base_command.py", line 188, in _main
+    status = self.run(options, args)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/commands/search.py", line 52, in run
+    pypi_hits = self.search(query, options)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/commands/search.py", line 71, in search
+    hits = pypi.search({'name': query, 'summary': query}, 'or')
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1112, in __call__
+    return self.__send(self.__name, args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1452, in __request
+    verbose=self.__verbose
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/network/xmlrpc.py", line 38, in request
+    return self.parse_response(response.raw)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1342, in parse_response
+    return u.close()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 656, in close
+    raise Fault(**self._stack[0])
+xmlrpc.client.Fault: <Fault -32500: "RuntimeError: PyPI's XMLRPC API is currently disabled due to unmanageable load and will be deprecated in the near future. See https://status.python.org/ for more information.">
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip install flask 
+Collecting flask
+  Downloading Flask-1.1.2-py2.py3-none-any.whl (94 kB)
+     |████████████████████████████████| 94 kB 6.7 MB/s 
+Collecting itsdangerous>=0.24
+  Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)
+Collecting click>=5.1
+  Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)
+     |████████████████████████████████| 82 kB 5.7 MB/s 
+Collecting Werkzeug>=0.15
+  Downloading Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)
+     |████████████████████████████████| 298 kB 36.4 MB/s 
+Collecting Jinja2>=2.10.1
+  Downloading Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)
+     |████████████████████████████████| 125 kB 49.1 MB/s 
+Collecting MarkupSafe>=0.23
+  Downloading MarkupSafe-1.1.1-cp37-cp37m-macosx_10_9_x86_64.whl (16 kB)
+Installing collected packages: itsdangerous, click, Werkzeug, MarkupSafe, Jinja2, flask
+Successfully installed Jinja2-2.11.3 MarkupSafe-1.1.1 Werkzeug-1.0.1 click-7.1.2 flask-1.1.2 itsdangerous-1.1.0
+WARNING: You are using pip version 20.1.1; however, version 21.0.1 is available.
+You should consider upgrading via the '/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/bin/python3 -m pip install --upgrade pip' command.
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip show Django  
+WARNING: Package(s) not found: Django
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip search flask 
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/cli/base_command.py", line 188, in _main
+    status = self.run(options, args)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/commands/search.py", line 52, in run
+    pypi_hits = self.search(query, options)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/commands/search.py", line 71, in search
+    hits = pypi.search({'name': query, 'summary': query}, 'or')
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1112, in __call__
+    return self.__send(self.__name, args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1452, in __request
+    verbose=self.__verbose
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/network/xmlrpc.py", line 38, in request
+    return self.parse_response(response.raw)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1342, in parse_response
+    return u.close()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 656, in close
+    raise Fault(**self._stack[0])
+xmlrpc.client.Fault: <Fault -32500: "RuntimeError: PyPI's XMLRPC API is currently disabled due to unmanageable load and will be deprecated in the near future. See https://status.python.org/ for more information.">
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip list         
+Package           Version
+----------------- -------
+asgiref           3.3.4
+click             7.1.2
+Flask             1.1.2
+itsdangerous      1.1.0
+Jinja2            2.11.3
+MarkupSafe        1.1.1
+pip               20.1.1
+pytz              2021.1
+setuptools        47.1.0
+sqlparse          0.4.1
+typing-extensions 3.7.4.3
+Werkzeug          1.0.1
+WARNING: You are using pip version 20.1.1; however, version 21.0.1 is available.
+You should consider upgrading via the '/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/bin/python3 -m pip install --upgrade pip' command.
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % 
+(py3Env) juanmolina@MacBookPro16-JuanMolina my_environments % pip search Flask 
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/cli/base_command.py", line 188, in _main
+    status = self.run(options, args)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/commands/search.py", line 52, in run
+    pypi_hits = self.search(query, options)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/commands/search.py", line 71, in search
+    hits = pypi.search({'name': query, 'summary': query}, 'or')
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1112, in __call__
+    return self.__send(self.__name, args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1452, in __request
+    verbose=self.__verbose
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pip/_internal/network/xmlrpc.py", line 38, in request
+    return self.parse_response(response.raw)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 1342, in parse_response
+    return u.close()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/xmlrpc/client.py", line 656, in close
+    raise Fault(**self._stack[0])
+xmlrpc.client.Fault: <Fault -32500: "RuntimeError: PyPI's XMLRPC 

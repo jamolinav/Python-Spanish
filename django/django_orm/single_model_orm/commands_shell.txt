@@ -1,0 +1,92 @@
+(djangoPyeEnv) juanmolina@NB-JMOLINA single_model_orm % 
+(djangoPyeEnv) juanmolina@NB-JMOLINA single_model_orm % python manage.py makemigrations
+Migrations for 'user_app':
+  user_app/migrations/0001_initial.py
+    - Create model users
+(djangoPyeEnv) juanmolina@NB-JMOLINA single_model_orm % python manage.py migrate       
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user_app
+Running migrations:
+  Applying user_app.0001_initial... OK
+(djangoPyeEnv) juanmolina@NB-JMOLINA single_model_orm % 
+(djangoPyeEnv) juanmolina@NB-JMOLINA single_model_orm % 
+(djangoPyeEnv) juanmolina@NB-JMOLINA single_model_orm % python manage.py shell  
+Python 3.7.9 (v3.7.9:13c94747c7, Aug 15 2020, 01:31:08) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> 
+>>> from user_app.models import *
+>>> 
+>>> new_user1 = users(first_name='Juan', last_name='Molina', email='jmol@gmail.com', age=46)
+>>> new_user1.save()
+>>> print(new_user1.id)
+1
+>>> new_user2 = users.objects.create(first_name='Cristobal', last_name='Cisternas', email='cris@gmail.com', age=8)
+>>> print(new_user2.id)
+2
+>>> new_user3 = users.objects.create(first_name='Alejandro', last_name='Molina', email='ale@gmail.com', age=2)
+>>> print(new_user3.id)
+3
+>>> 
+>>> allUsers = users.objects.all()
+>>> print(allUsers)
+<QuerySet [<Movie object: Juan Juan (1)>, <Movie object: Cristobal Cristobal (2)>, <Movie object: Alejandro Alejandro (3)>]>
+>>> 
+>>> users.objects.last()
+<Movie object: Alejandro Alejandro (3)>
+>>> 
+>>> users.objects.first()
+<Movie object: Juan Juan (1)>
+>>> 
+>>> users.objects.get(id=3).last_name = 'Pancakes'
+>>> users.objects.get(id=3)
+<Movie object: Alejandro Alejandro (3)>
+>>> users.objects.get(id=3)
+<Movie object: Alejandro Alejandro (3)>
+>>> 
+>>> user3 = users.objects.get(id=3)
+>>> user3.last_name = 'Pancakes'
+>>> user3.save()
+>>> 
+>>> user2 = users.objects.get(id=2)
+>>> user2.delete()
+(1, {'user_app.users': 1})
+>>> 
+>>> print(allUsers)
+<QuerySet [<Movie object: Juan Juan (1)>, <Movie object: Alejandro Alejandro (3)>]>
+>>> 
+>>> sorted_user = sorted(users.objects.all())
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: '<' not supported between instances of 'users' and 'users'
+>>> sorted_user = sorted(allUsers)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: '<' not supported between instances of 'users' and 'users'
+>>> 
+>>> sorted_user = sorted(allUsers.first_name)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'first_name'
+>>> 
+>>> allUsers.order_by('first_name')
+<QuerySet [<Movie object: Alejandro Alejandro (3)>, <Movie object: Juan Juan (1)>]>
+>>> 
+>>> allUsers.order_by('first_name')
+<QuerySet [<Movie object: Alejandro Alejandro (3)>, <Movie object: Juan Juan (1)>]>
+>>> 
+>>> allUsers.order_by('first_name').aggregate('desc')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/djangoPyeEnv/lib/python3.7/site-packages/django/db/models/query.py", line 363, in aggregate
+    self._validate_values_are_expressions((*args, *kwargs.values()), method_name='aggregate')
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/djangoPyeEnv/lib/python3.7/site-packages/django/db/models/query.py", line 1310, in _validate_values_are_expressions
+    ', '.join(invalid_args),
+TypeError: QuerySet.aggregate() received non-expression(s): desc.
+>>> 
+>>> 
+>>> 
+>>> allUsers.order_by('first_name')[::-1]
+[<Movie object: Juan Juan (1)>, <Movie object: Alejandro Alejandro (3)>]
+>>> 

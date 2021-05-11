@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+    background:chocolate;
+    color: white;
+}
+h1{
+    padding-top: 200px;
+    font-size: 40px;
+}
+.botones{
+    display: flex;
+    justify-content: center;
+}
+input{
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    background: linear-gradient(353deg, #ff5722, #673ab7);
+    color: white;
+    margin: 10px;
+}

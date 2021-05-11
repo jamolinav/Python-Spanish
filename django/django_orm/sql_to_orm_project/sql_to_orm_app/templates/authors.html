@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"">
+    <title>Books & Authors</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form class="form-authors" action="/author/add" method="POST">
+            {% csrf_token %}
+            <h2>Add a Author</h2>
+            <div>
+                <span>First Name</span> <input type="text" name="first_name" size="20" maxlength="20">
+            </div>
+            <div>
+                <span>Last Name</span> <input type="text" name="last_name" size="20" maxlength="20">
+            </div>
+            <div>
+                <span>Notes</span><textarea name="notas" id="" cols="20" rows="6"></textarea>
+            </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <input class="button" type="submit" value="Add">
+        </form>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            {% for author in authors %}
+            <tr>
+                <td>{{author.id}}</td>
+                <td>{{author.first_name}}&nbsp;{{author.last_name}}</td>
+                <td><a href="/authors/{{author.id}}">View</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

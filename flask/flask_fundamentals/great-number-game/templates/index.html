@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script type="text/javascript" src='https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js'></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' ) }}">
+    <script>
+        $(document).ready(function() {
+            console.log('nombre:'+$('#nombre').val()+', numero_jugador'+$('#numero_jugador').val())
+            $("#basic-form").validate({
+                rules: {
+                    nombre : {
+                        required: true,
+                        minlength: 3
+                    },
+                    numero_jugador: {
+                        required: true,
+                        number: true,
+                        min: 1,
+                        max: 100
+                    }
+                }
+            });
+        });
+    </script>
+    <title>Juego de Números</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Bienvenido al juego de números</h1>
+        <p>Estoy pensando un numero entre el 1 y el 100</p>
+        <p>Adivina cuál es: ???</p>
+        <p>Resultado: <span class="mensaje">{{session['mensaje']}}</span>, Intentos: <b class="mensaje">{{session['intentos']}}</b></p>
+        <form id="basic-form" action="/adivinar" method="post">
+            <span>Tu nombre:</span><input type="text" name="nombre" value="{{session['nombre']}}">
+            <span>Número:</span><input type="text" size="3" maxlength="3" name="numero_jugador">
+            <input id="adivinar" type="submit" value="Adivinar" onkeypress="valDatos()">
+        </form>
+        <br>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Intentos</th>
+                    <th>Resultado</th>
+                    <th>Numero secreto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in session['jugadores'] %}
+                    <tr class={{ user['resultado'] }}>
+                        <td>{{ user['nombre'] }}</td>
+                        <td>{{ user['intentos'] }}</td>
+                        <td>{{ user['resultado'] }}</td>
+                        <td>{{ user['num_secreto'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <form action="/destroy_session" method="post">
+            <input id="reiniciar" type="submit" value="Reiniciar">
+        </form>
+    </div>
+</body>
+</html>

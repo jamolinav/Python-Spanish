@@ -1,0 +1,73 @@
+(djangoPyeEnv) juanmolina@NB-JMOLINA sql_to_orm_project % 
+(djangoPyeEnv) juanmolina@NB-JMOLINA sql_to_orm_project % python manage.py shell  
+Python 3.7.9 (v3.7.9:13c94747c7, Aug 15 2020, 01:31:08) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from sql_to_orm_app.models import *
+>>> 
+>>> book = Book.objects.create(title='C Sharp', desc='C Sharp')
+>>> book = Book.objects.create(title='Java', desc='Java')
+>>> book = Book.objects.create(title='Python', desc='Python')
+>>> book = Book.objects.create(title='PHP', desc='PHP')
+>>> book = Book.objects.create(title='Ruby', desc='Ruby')
+>>> 
+>>> author = Author.objects.create(first_name='Jane', last_name='Austen')
+>>> 
+>>> author = Author.objects.create(first_name='Emily', last_name='Dickinson')
+>>> author = Author.objects.create(first_name='Fyodor', last_name='Dostoevksy')
+>>> author = Author.objects.create(first_name='William', last_name='Shakespeare')
+>>> author = Author.objects.create(first_name='Lau', last_name='Tzu')
+>>> 
+>>> 
+>>> book = Book.objects.get(title='C Sharp')
+>>> 
+>>> book.tittle='C #'
+>>> book.save()
+>>> print(book.id)
+1
+>>> book.title='C #'
+>>> book.save()
+>>> 
+>>> 
+>>> author = Author.objects.get(first_name='William')
+>>> author.first_name = 'Bill'
+>>> author.save()
+>>> 
+>>> author = Author.objects.first()
+>>> author.books.add(Book.objects.first())
+>>> 
+>>> 
+>>> 
+>>> author.books.add(Book.objects.get(title='Java'))
+>>> 
+>>> author = Author.objects.get(first_name='Emily')
+>>> author.books.add(Book.objects.get(title='C #'))
+>>> author.books.add(Book.objects.get(title='Java'))
+>>> author.books.add(Book.objects.get(title='Python'))
+>>> 
+>>> author = Author.objects.get(first_name='Fyodor')
+>>> author.books.add(Book.objects.get(title='C #'))
+>>> author.books.add(Book.objects.get(title='Python'))
+>>> author.books.add(Book.objects.get(title='Java'))
+>>> author.books.add(Book.objects.get(title='PHP'))
+>>> 
+>>> author = Author.objects.get(first_name='Lau')
+>>> 
+>>> author.books.add(*Book.objects.all())
+>>> 
+>>> Book.objects.get(id=3).authors.all()
+<QuerySet [<Author: Author object (2)>, <Author: Author object (3)>, <Author: Author object (5)>]>
+>>> 
+>>> Book.objects.get(id=3).authors.first().delete()
+(4, {'sql_to_orm_app.Author_books': 3, 'sql_to_orm_app.Author': 1})
+>>> 
+>>> Book.objects.get(id=2).authors.add(Author.objects.get(id=5))
+>>> 
+>>> Book.objects.filter(authors=Author.objects.get(id=3))
+<QuerySet [<Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>, <Book: Book object (1)>]>
+>>> 
+>>> Author.objects.filter(books=Book.objects.get(id=5))
+<QuerySet [<Author: Author object (5)>]>
+>>> 
+>>> 

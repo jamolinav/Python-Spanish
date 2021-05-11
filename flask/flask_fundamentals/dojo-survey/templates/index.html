@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'styles.css') }}">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <h3>Dojo Survey</h3>
+    <form action='/result' method='post'>
+        <table>
+            <tbody>
+                <tr><td>Your Name</td><td>:<input type='text' name='name'></td></tr>
+                <tr><td>Dojo Location</td><td>:<select name='location' placeholder='Seleccione'>
+                                                    <option value="San José">San José</option>
+                                                    <option value="Santiago">Santiago</option>
+                                                    <option value="San Francisco">San Francisco</option>
+                                                    <option value="Bogotá">Bogotá</option>
+                                                </select></td></tr>
+                <tr><td>Favorite Language</td><td>:<select name='language'>
+                                                    <option value="Python">Python</option>
+                                                    <option value="HTML">HTML</option>
+                                                    <option value="css">css</option>
+                                                    <option value="Javascript">Javascript</option>
+                                                </select></td></tr>
+                <tr><td>Favorite Vehicle</td><td>:
+                    <input type="checkbox" name="vehicle1" value="Bike">
+                    <label for="vehicle1"> I have a bike</label>
+                    <input type="checkbox" name="vehicle2" value="Car">
+                    <label for="vehicle2"> I have a car</label>
+                    <input type="checkbox" name="vehicle3" value="Boat" checked>
+                    <label for="vehicle3"> I have a boat</label>
+                </td></tr>
+                <tr><td>Genero</td><td>:
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </td></tr>
+                <tr><td colspan="2">Comment (optional):</td></tr>
+                <tr><td colspan="2"><textarea name="comment" id="" cols="30" rows="10"></textarea></td></tr>
+            </tbody>
+        </table>    
+        <input type='submit' value='Send'>
+</form>
+</body>
+</html>

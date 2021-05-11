@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' ) }}">
+    <title>Users</title>
+</head>
+<body>
+    
+    {% if accion == 'new' %}
+        <div class="wrapper">
+            <a href="/users">Home</a>
+            <h1>Add a New Email</h1>
+            {% with messages = get_flashed_messages() %}     <!-- declara la variable llamada mensaje -->
+                {% if messages %}                            <!-- Revisa si hay mensajes -->
+                    {% for message in messages %}            <!-- va a través de los mensajes -->
+                        <p>{{message}}</p>                   <!-- muestra cada mensaje en un tag de parrafo -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/email/create" method="POST">
+                <p><span>Email: </span><input type="text" size="50" name="email" value="{{session['email']}}"></p>
+                <input type="submit" value="Create">
+            </form>
+        </div>
+    {% endif %}
+
+    {% if accion == 'edit' %}
+        <div class="wrapper">
+            <a href="/emails">Home</a>
+            <h1>Email</h1>
+            <form action="/email/{{ email['email'] }}/update" method="POST">
+                <p><span>Email: </span><input type="text" size="50" name="email" value="{{ email['email'] }}"></p>
+                <div class="actions_update">
+                    <input type="submit" value="Update">
+                </div>
+            </form>
+        </div>
+    {% endif %}
+
+    {% if accion == 'emails' %}
+        <h1>All Emails</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for email in all_emails %}
+                    <tr}>
+                        <td>{{ email['email'] }}</td>
+                        <td>{{ email['created_at'] }}</td>
+                        <td class="actions">
+                            <a href="/email/{{ email['email'] }}/edit"> Edit</a>
+                            <a href="/email/{{ email['email'] }}/destroy"> | Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        {% with messages = get_flashed_messages() %}     <!-- declara la variable llamada mensaje -->
+            {% if messages %}                            <!-- Revisa si hay mensajes -->
+                {% for message in messages %}            <!-- va a través de los mensajes -->
+                    <p>{{message}}</p>                   <!-- muestra cada mensaje en un tag de parrafo -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <br>
+        <a href="/email/new_email">Add a New Email</a>
+    {% endif %}
+</body>
+</html>

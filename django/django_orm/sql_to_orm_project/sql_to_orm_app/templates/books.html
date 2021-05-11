@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link rel="stylesheet" href="stylessssss.cs">
+{% endblock %}
+{% block content %}
+    <div class="page-books">
+        <form action="/add" method="POST">
+            {% csrf_token %}
+            <h2>Add a Book</h2>
+            <div>
+                <span>Title</span> <input type="text" name="title" size="20" maxlength="20">
+            </div>
+            <div>
+                <span>Description</span><textarea name="description" id="" cols="20" rows="6"></textarea>
+            </div>
+            <input class="button" type="submit" value="Add">
+        </form>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td><a href="/books/{{book.id}}">View</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' ) }}">
+    <title>Counter</title>
+</head>
+<body>
+    <div class='wrapper'>
+        <h1>Counter</h1>
+        <h3>{{ times }}{{' '}}times.</h3>
+        <div class="forms">
+            <form action="/two_visits">
+                <button>Add two visits!</button>
+            </form>
+            <form action="/n_visits" method="post">
+                Nº<input type="text" name="custom_times" size="3" maxlength="2" value="{{custom_times}}"><button>Add "n" visits!</button>
+            </form>
+            <form action="/destroy_session">
+                <button>Reset</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

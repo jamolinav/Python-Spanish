@@ -1,0 +1,83 @@
+body{
+height: 650px;
+}
+p{
+    color: white;
+    font-size: 20px;
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 50% 40%;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, black, transparent);
+    padding: 30px;
+    height: 100%;
+    width: 100%;
+}
+.forms{
+    display: grid;
+    grid-template-columns: repeat(4, 23%);
+    gap: 20px;
+    height: 100%;
+    width: 100%;
+    margin: 20px;
+}
+form{
+    border-radius: 10px;
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: 30% 20% 50%;
+    justify-content: center;
+    align-items: center;
+    background: cornsilk;
+}
+.findgold{
+    height: 30px;
+    border-radius: 10px;
+}
+.reset{
+    height: 30px;
+    border-radius: 10px;
+    height: 40px;
+    width: 200px;
+    background: linear-gradient(45deg, #863131, #e85e5e);
+    color: white;
+    font-size: 18px;
+}
+.score{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+footer form{
+    background: none;
+    border: none;
+    display: block;
+    margin-top: 10px;
+}
+
+textarea{
+    width: 100%;
+    background: darkkhaki;
+}
+
+#golds{
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 2px solid red;
+    text-align: center;
+}
+
+.activities{
+    background: lavenderblush;
+    height: 170px;
+    display: block;
+    overflow-y: scroll;
+}
+
+footer{
+    margin: 20px;
+}

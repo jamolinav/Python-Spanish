@@ -1,0 +1,52 @@
+
+SE LLAMA A UNA TABLA INEXISTENTE "riends"
+
+ * Detected change in '/Users/juanmolina/Documents/CodingDojo/Python-Spanish/flask/flask_mysql/first_flask_mysql/server.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 192-298-009
+Running Query: SELECT * FROM riends;
+Something went wrong (1146, "Table 'first_flask.riends' doesn't exist")
+False
+127.0.0.1 - - [19/Apr/2021 15:21:48] "GET / HTTP/1.1" 200 -
+
+
+SE MODIFICA A USUARIO INEXISTENTE DE LA BASE DE DATOS "oot" (en vez de "root")
+
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 921, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 959, in _process_auth
+    return _auth.sha256_password_auth(self, auth_packet)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pymysql/_auth.py", line 182, in sha256_password_auth
+    data = sha2_rsa_encrypt(conn.password, conn.salt, conn.server_public_key)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pymysql/_auth.py", line 144, in sha2_rsa_encrypt
+    "'cryptography' package is required for sha256_password or caching_sha2_password auth methods"
+RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods
+127.0.0.1 - - [19/Apr/2021 15:23:41] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2021 15:23:41] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+
+
+SE MODIFICA HOST DE LA CONEXIONA UNA INEXISTENTE "localhos" (EN VEZ DE "localhost")
+
+ File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/flask/flask_mysql/first_flask_mysql/mysqlconnection.py", line 43, in connectToMySQL
+    return MySQLConnection(db)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/flask/flask_mysql/first_flask_mysql/mysqlconnection.py", line 12, in __init__
+    autocommit = True)
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 353, in __init__
+    self.connect()
+  File "/Users/juanmolina/Documents/CodingDojo/Python-Spanish/my_environments/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 664, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhos' ([Errno 8] nodename nor servname provided, or not known)")
+127.0.0.1 - - [19/Apr/2021 15:25:15] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2021 15:25:15] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2021 15:25:15] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+
+
+SE ESCRIBE DE FORMA ERRONES SINTAXIS SQL...
+
+ * Debugger is active!
+ * Debugger PIN: 192-298-009
+Running Query: SELECT  FROM friends;
+Something went wrong (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM friends' at line 1")
+False
+127.0.0.1 - - [19/Apr/2021 15:27:10] "GET / HTTP/1.1" 200 -

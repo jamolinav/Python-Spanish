@@ -1,0 +1,19 @@
+juanmolina@MacBookPro16-JuanMolina Python-Spanish % mkdir -p my_environments python/fundamentals python/OOP flask/flask_fundamentals flask/flask_mysql django/django_intro django/django_orm django/django_full_stack
+juanmolina@MacBookPro16-JuanMolina Python-Spanish % 
+juanmolina@MacBookPro16-JuanMolina Python-Spanish % 
+juanmolina@MacBookPro16-JuanMolina Python-Spanish % du -a .               
+0	./flask/flask_fundamentals
+0	./flask/flask_mysql
+0	./flask
+0	./my_environments
+0	./python/fundamentals
+0	./python/OOP
+0	./python
+0	./python_stack
+0	./django/django_full_stack
+0	./django/django_intro
+0	./django/django_orm
+0	./django
+0	.
+juanmolina@MacBookPro16-JuanMolina Python-Spanish % 
+juanmolina@MacBookPro16-JuanMolina Python-Spanish % 

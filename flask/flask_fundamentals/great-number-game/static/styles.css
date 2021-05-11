@@ -1,0 +1,54 @@
+.wrapper{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, black, transparent);
+    padding: 30px;
+}
+.Ganador{
+    background: springgreen;
+}
+.Perdedor{
+    background: yellow;
+}
+.mensaje{
+    background: greenyellow;
+    color: darkred;
+    padding: 0px 5px 0px 5px;
+}
+h1{
+    color: white;
+}
+
+thead{
+    color: white;
+}
+
+tr{
+    text-align: center;
+}
+
+p{
+    color: white;
+}
+
+#reiniciar{
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #d04876, #bb232300);
+    color: white;
+}
+
+#adivinar{
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #8cec1b, #bb232300);
+        
+    color: white;
+}
+
+span{
+    color: white;
+}

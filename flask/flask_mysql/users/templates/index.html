@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' ) }}">
+    <title>Users</title>
+</head>
+<body>
+    {% if accion == 'show' %}
+        <div class="wrapper">
+            <a href="/users">Home</a>
+            <h1>Users {{ user['id'] }}</h1>
+            <p><span>Full Name</span>{{': '}}{{user['first_name']}}{{' '}}{{ user['last_name'] }}</p>
+            <p><span>Email</span>{{ ': ' + user['email'] }}</p>
+            <p><span>Created On</span>{{ ': ' }} {{ user['created_at'] }}</p>
+            <p><span>Last Updated On</span>{{ ': ' }} {{ user['updated_at'] }}</p>
+            <div class="actions">
+                <a href="/user/{{ user['id'] }}/edit"> Edit</a>
+                <a href="/user/{{ user['id'] }}/destroy"> | Delete</a>
+            </div>
+        </div>
+    {% endif %}
+    {% if accion == 'new' %}
+        <div class="wrapper">
+            <a href="/users">Home</a>
+            <h1>Add a New Users</h1>
+            {% with messages = get_flashed_messages() %}     <!-- declara la variable llamada mensaje -->
+                {% if messages %}                            <!-- Revisa si hay mensajes -->
+                    {% for message in messages %}            <!-- va a través de los mensajes -->
+                        <p>{{message}}</p>                   <!-- muestra cada mensaje en un tag de parrafo -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/user/create" method="POST">
+                <p><span>First Name: </span><input type="text" size="50" name="first_name" value="{{session['first_name']}}"></p>
+                <p><span>Last Name: </span><input type="text" size="50" name="last_name" value="{{session['last_name']}}"></p>
+                <p><span>Email: </span><input type="text" size="50" name="email" value="{{session['email']}}"></p>
+                <input type="submit" value="Create">
+            </form>
+        </div>
+    {% endif %}
+    {% if accion == 'edit' %}
+        <div class="wrapper">
+            <a href="/users">Home</a>
+            <h1>Users {{ user['id'] }}</h1>
+            <form action="/user/{{ user['id'] }}/update" method="POST">
+                <p><span>First Name: </span><input type="text" size="50" name="first_name" value="{{ user['first_name'] }}"></p>
+                <p><span>Last Name: </span><input type="text" size="50" name="last_name" value="{{ user['last_name'] }}"></p>
+                <p><span>Email: </span><input type="text" size="50" name="email" value="{{ user['email'] }}"></p>
+                <div class="actions_update">
+                    <input type="submit" value="Update">
+                    <a href="/user/{{ user['id'] }}">Show User</a>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+    {% if accion == 'users' %}
+        <h1>All Users</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in all_users %}
+                    <tr}>
+                        <td>{{ user['id'] }}</td>
+                        <td>{{ user['first_name']  + ' ' + user['last_name'] }}</td>
+                        <td>{{ user['email'] }}</td>
+                        <td>{{ user['created_at'] }}</td>
+                        <td class="actions">
+                            <a href="/user/{{ user['id'] }}">Show</a>
+                            <a href="/user/{{ user['id'] }}/edit"> | Edit</a>
+                            <a href="/user/{{ user['id'] }}/destroy"> | Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a href="/user/new_user">Add a New User</a>
+    {% endif %}
+</body>
+</html>

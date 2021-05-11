@@ -1,0 +1,144 @@
+.login-body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.login-margin{
+    position: absolute;
+    left: -200px;
+    top: 0px;
+    width: 100px;
+    height: 1px;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.login-wrapper{
+    position: fixed;
+    border: 1px solid rgb(206, 206, 206);
+    margin: 5px;
+    overflow: hidden;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+}
+
+.login-windows{
+    position: fixed;
+    /* height: 25%;
+    width: 25%; */
+    height: auto;
+    width: 30%;
+    border: 2px solid lightsteelblue;
+    left: 42%;
+    top: 30%;
+    border-radius: 5px;
+    background: aliceblue;
+}
+
+.login-title{
+    background: linear-gradient(#2196f387, #2196f338, #00bcd400);
+    height: 8%;
+    text-align: -webkit-center;
+    font-style: italic;
+    padding-top: 8px;
+    color: steelblue;
+    font-weight: bold;
+}
+
+.login-wind-body{
+    background: white;
+}
+.login-content{
+    left: 5px;
+    top: 29px;
+    border-radius: 5px;
+    border: 1px ridge #b0c4de61;
+    margin: 5px;
+    background: ghostwhite;
+    height: 70%;
+}
+
+.login-text {
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
+.login-text div {
+    display: flex;
+    align-items: baseline;
+}
+
+.login-form{
+    display: grid;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    padding-top: 10%;
+}
+
+.login-text input {
+    height: 15px;
+    width: 60%;
+    margin-right: 2%;
+    border-radius: 5px;
+    border-color: #b0c4de61;
+    font-family: Tahoma;
+    font-size: 11px;
+    color: steelblue;
+}
+
+.login-content p{
+    font-family: Tahoma;
+    font-size: 11px;
+    margin-left: 10%;
+    color: steelblue;
+    font-weight: bolder;
+}
+
+.login-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5%;
+    margin-top: 15px;
+    height: 35%;
+}
+
+.login-buttons input{
+    height: 20px;
+    width: 40%;
+    border-color: #b0c4de61;
+    background-color: aliceblue;
+    font-family: Tahoma;
+    font-size: 11px;
+    border-radius: 5px;
+    color: steelblue;
+}
+
+footer{
+    /* height: 25px;
+    border: 1px ridge #b0c4de61;
+    margin: 5px;
+    background: ghostwhite;
+    border-radius: 5px;
+    display: contents; */
+    height: 10%;
+}
+
+.login-text-footer{
+    font-family: Tahoma;
+    font-size: 11px;
+    margin-left: 10%;
+    color: #fd0404c2;
+    font-weight: bolder;
+}
+
+.registrarme{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    margin-left: 10%;
+    color: #83c6f3c4;
+    font-style: oblique;
+    -webkit-font-smoothing: antialiased;
+}
